@@ -27,7 +27,21 @@
 		<section class="main">
 			<div class="btn-group">
 				<button id="get-joke-btn">Get New Joke</button>
-				<button id="tweet-btn">Tweet it!</button>
+				<fieldset>
+					<legend>Tell Chuck Your Name</legend>
+					<input id="firstName" type="text" placeholder="first name" />
+					<input id="lastName" type="text" placeholder="last name" />
+					<button id="usernameBtn">Chuck Your Name</button>
+				</fieldset>
+				<fieldset>
+					<legend>Tell Chuck How Many Jokes</legend>
+					<input
+						id="moreJokesInput"
+						type="number"
+						placeholder="enter num"
+					/>
+					<button id="moreJokesBtn">Get More Jokes</button>
+				</fieldset>
 			</div>
 			<form>
 				<label for="explicitCheck"

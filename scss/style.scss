@@ -9,6 +9,7 @@ body {
 	color: #fff;
 	font-family: Georgia, serif;
 	padding: 0 15%;
+	height: 100vh;
 }
 
 header {
@@ -17,7 +18,7 @@ header {
 	justify-content: center;
 	align-items: center;
 	padding: 20px 20px;
-	height: 400px;
+	height: 40%;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 	background-color: rgba(255, 255, 255, 0.1);
 	box-shadow: inset 0 0 5px #eee;
@@ -70,7 +71,11 @@ header {
 }
 
 section {
+	height: 60%;
+	display: flex;
+	flex-direction: column;
 	button {
+		font-size: 20px;
 		display: inline-block;
 		font-weight: 700;
 		color: #7a8b95;
@@ -98,17 +103,75 @@ section {
 		top: 5px;
 		box-shadow: none;
 	}
+	input {
+		font-weight: 700;
+		width: 140px;
+		font-size: 20px;
+		padding: 15px;
+		border-radius: 10px;
+		background-color: #e5e4c0;
+		box-shadow: 0 5px 0 #9ec7d5;
+		border: none;
+		&:focus {
+			outline: none;
+			background: #bdecfc;
+			background: -webkit-linear-gradient(#bdecfc, #b4dfee);
+			background: linear-gradient(#bdecfc, #b4dfee);
+			box-shadow: 0 5px 0 #9ec7d5;
+		}
+		&:active {
+			background: #bdecfc;
+			background: -webkit-linear-gradient(#bdecfc, #b4dfee);
+			background: linear-gradient(#bdecfc, #b4dfee);
+			box-shadow: 0 5px 0 #9ec7d5;
+		}
+	}
+
+	.btn-group {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin: 20px;
+		flex-direction: row;
+		fieldset {
+			legend {
+				margin-bottom: 5px;
+				font-size: 20px;
+				color: #e5e4c0;
+				text-shadow: 0 0 5px #555;
+				letter-spacing: 2px;
+			}
+			border: none;
+		}
+	}
 
 	form {
 		text-align: center;
+
+		input {
+			box-shadow: none;
+			width: auto;
+		}
+		label {
+			color: #e5e4c0;
+			text-shadow: 0 0 5px #555;
+			letter-spacing: 2px;
+		}
 	}
 
 	#output {
+		padding: 20px;
 		position: relative;
 		font-size: 1.25em;
-		margin-top: 10%;
+		margin-top: 3%;
+		margin-bottom: 7%;
 		text-align: center;
-		min-height: 300px;
+		min-height: 50px;
+		border-radius: 10px;
+		overflow: hidden;
+		p {
+			margin: 10px 0;
+		}
 	}
 
 	.btn-group {
@@ -122,16 +185,14 @@ section {
 		margin-left: 10px;
 	}
 
-	.animate {
-		-webkit-transition: all 1s;
-		transition: all 1s;
-	}
-
-	.slide-off-left {
-		left: -150%;
-	}
-
-	.slide-in-right {
-		left: 0;
+	#output {
+		font-weight: 700;
+		font-size: 30px;
+		color: #e5e4c0;
+		text-shadow: 0 0 5px #555;
+		letter-spacing: 2px;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		background-color: rgba(255, 255, 255, 0.1);
+		box-shadow: inset 0 0 5px #eee;
 	}
 }
