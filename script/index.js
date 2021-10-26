@@ -7,7 +7,7 @@ randomJoke.addEventListener('click', async (e) => {
 	e.preventDefault();
 	const output = document.getElementById('output');
 	output.style.display = 'block';
-	output.innerHTML = await chuck.displayRandomJoke();
+	output.innerHTML = await displayRandomJoke();
 });
 
 if (document.getElementById('output').innerHTML === '') {
@@ -22,7 +22,7 @@ usernameBtn.addEventListener('click', async (e) => {
 	const output = document.getElementById('output');
 	output.style.display = 'block';
 	if (firstName && lastName) {
-		output.innerHTML = await chuck.displayUserJoke(firstName, lastName);
+		output.innerHTML = await displayUserJoke(firstName, lastName);
 	} else {
 		output.innerHTML = 'Better tell Chuck your name 😉';
 	}
@@ -35,8 +35,42 @@ moreJokesBtn.addEventListener('click', async (e) => {
 	const output = document.getElementById('output');
 	output.style.display = 'block';
 	if (jokeCount) {
-		await chuck.displayMoreJokes(jokeCount);
+		await displayMoreJokes(jokeCount);
 	} else {
 		output.innerHTML = 'Better tell Chuck how many 😉';
 	}
 });
+
+async function displayMoreJokes(number) {
+	const exclude = document.getElementById('explicitCheck').checked;
+	let joke = exclude
+		? await chuck.randomNotExplicitJokes(number)
+		: await chuck.randomChuckJokes(number);
+	let output = document.getElementById('output');
+	const jokes = joke.value;
+	const jokeList = jokes.map((joke) => {
+		return `<p>${joke.joke}</p>`;
+	});
+	output.innerHTML = jokeList.join('🌟');
+	return output;
+}
+
+async function displayRandomJoke() {
+	const exclude = document.getElementById('explicitCheck').checked;
+	let joke = exclude
+		? await chuck.randomNotExplicitJoke()
+		: await chuck.randomChuckJoke();
+	let output = document.getElementById('output');
+	output = joke.value.joke;
+	return output;
+}
+
+async function displayUserJoke(firstName, lastName) {
+	const exclude = document.getElementById('explicitCheck').checked;
+	let joke = exclude
+		? await chuck.userChuckJokeNerdy(firstName, lastName)
+		: await chuck.userChuckJoke(firstName, lastName);
+	let output = document.getElementById('output');
+	output = joke.value.joke;
+	return output;
+}
